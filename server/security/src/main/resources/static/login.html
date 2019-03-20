@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="login.css">
+        <title>Login</title>        
+    </head>
+    <body>  
+        <form name="loginForm">
+            <table>
+                <tr>
+                    <td>Username:</td>
+                    <td><input type="text" size=25 name="user" required></td>
+                </tr>
+                        
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="Password" size=25 name="pwd" required></td>
+                </tr>
+                        
+                <tr>
+                    <td><input type="submit" id="login" value="Login" onclick="this.value='Loading...';check(this.form);"></td>
+                </tr>
+                        
+            </table>
+        </form>
+        <script src="login.js"></script>
+    </body>
+</html>
