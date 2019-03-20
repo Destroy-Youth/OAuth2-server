@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd"> 
+    <changeSet author="evanny" id="20190224-1">
+
+        <createTable tableName="DIRECCION">
+            <column autoIncrement="true" name="DIR_ID" type="int">
+                <constraints primaryKey="true" primaryKeyName="PK_DIRECCION"/>
+            </column>
+            <column name="DIR_CALLE" type="nvarchar(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DIR_NUMERO" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DIR_COLONIA" type="nvarchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DIR_CIUDAD" type="nvarchar(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DIR_CP" type="int">
+                <constraints nullable="false"/>
+            </column>
+	    </createTable>
+
+        <createTable tableName="PERMISOS">
+            <column autoIncrement="true" name="PER_ID" type="int">
+                <constraints primaryKey="true" primaryKeyName="PK_PERMISOS"/>
+            </column>
+            <column name="PER_NOMBRE" type="nvarchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PER_FUNCION" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+	    </createTable>
+
+        <createTable tableName="EMPLEADO">
+            <column autoIncrement="true" name="EMP_ID" type="int">
+                <constraints primaryKey="true" primaryKeyName="PK_EMPLEADO"/>
+            </column>
+            <column name="EMP_NOMBRE" type="nvarchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EMP_APELLIDOP" type="nvarchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EMP_APELLIDOM" type="nvarchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EMP_EDAD" type="int(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EMP_PERMISO" type="int">
+                <constraints nullable="false" foreigKeyName="FK_EMP_PERMISO_PER_ID" references="PERMISOS(PER_ID)"/>
+            </column>
+            <column name="EMP_EMAIL" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EMP_TELEFONO" type="int(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EMP_DIRECCION" type="int">
+                <constraints nullable="false" foreigKeyName="FK_EMP_DIRECCION_DIR_ID" references="DIRECCION(DIR_ID)"/>
+            </column>
+            <column name="EMP_ACTIVO" type="bit">
+                <constraints nullable="false"/>
+            </column>
+	    </createTable>
+
+    </changeSet>
+</databaseChangeLog> 
