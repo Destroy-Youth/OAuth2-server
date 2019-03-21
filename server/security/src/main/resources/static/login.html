@@ -5,7 +5,11 @@
     </head>
     <body>  
         <form name="loginForm">
-            <table>
+            <table>                    
+                <tr>
+                    <img src="icons/logo.png" alt="LoginImage" width="200" height="120">
+                </tr>
+
                 <tr>
                     <td>Username:</td>
                     <td><input type="text" size=25 name="user" required></td>
@@ -17,7 +21,7 @@
                 </tr>
                         
                 <tr>
-                    <td><input type="submit" id="login" value="Login" onclick="this.value='Loading...';check(this.form);"></td>
+                    <td><input type="button" id="login" value="Login" onclick="check(this.form);"></td>
                 </tr>
                         
             </table>
