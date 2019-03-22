@@ -25,6 +25,5 @@ public class SecurityApplication implements CommandLineRunner{
     public void run(String... args) throws Exception {
         //conexion.saveUser("evanny","rivera",3);
         UserDO byNameAndPassword = prueba.findByNameAndPassword("ejjeej", "rivera").get();
-
     }
 }

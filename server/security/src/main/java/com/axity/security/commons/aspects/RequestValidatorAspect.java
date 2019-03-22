@@ -33,8 +33,8 @@ public class RequestValidatorAspect{
             LOG.info("Exception: {}", e.getMessage());
             ErrorTO errorTO= new ErrorTO();
             if(e instanceof NoSuchElementException){
-                LOG.info("Informacion no encontrada");
-                errorTO.setErrorMessage("Informacion no encontrada");
+                LOG.info("Usuario o contraseña incorrectos");
+                errorTO.setErrorMessage("Usuario o contraseña incorrectos");
                 errorTO.setErrorCode(500);
                 return new ResponseEntity<>(errorTO, HttpStatus.NOT_FOUND);
             }

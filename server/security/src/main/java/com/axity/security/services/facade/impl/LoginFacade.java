@@ -5,16 +5,18 @@ import com.axity.security.model.UserDO;
 import com.axity.security.services.facade.ILoginFacade;
 import com.axity.security.services.service.impl.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.Optional;
+import org.modelmapper.ModelMapper;
 
 public class LoginFacade implements ILoginFacade{
     @Autowired
     LoginService loginService;
+    @Autowired
+    private ModelMapper modelMapper;
     @Override
-    public Optional<UserDO> login(UserTO userTO) {
+    public UserTO login(UserTO userTO) {
 
-        Optional<UserDO> login = this.loginService.login(userTO.getName(), userTO.getPassword());
-        return login;
+        UserDO loginDO = this.loginService.login(userTO.getName(), userTO.getPassword());
+        UserTO loginTO = this.modelMapper.map(loginDO,UserTO.class);
+        return loginTO;
     }
 }

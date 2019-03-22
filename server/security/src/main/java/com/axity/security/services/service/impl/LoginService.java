@@ -14,9 +14,9 @@ public class LoginService implements ILoginService{
     UserDAO userDAO;
 
     @Override
-    public Optional<UserDO> login(String name,String password) {
+    public UserDO login(String name,String password) {
 
-        Optional<UserDO> byNameAndPassword = this.userDAO.findByNameAndPassword(name, password);
+        UserDO byNameAndPassword = this.userDAO.findByNameAndPassword(name, password).get();
         return byNameAndPassword;
     }
 }
