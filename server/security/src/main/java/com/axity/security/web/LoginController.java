@@ -1,4 +1,4 @@
-package com.axity.security.rest;
+package com.axity.security.web;
 
 import java.io.Console;
 
