@@ -1,3 +1,6 @@
+var w = $(window).width();
+ $('.content').css('width', w);
+ 
 function check(form)
 {
     // METODO POR GET
@@ -32,5 +35,4 @@ function check(form)
             console.error(error);
     });
     }
-    
 }

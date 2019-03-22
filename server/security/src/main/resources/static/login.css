@@ -1,3 +1,7 @@
+.container{
+    width:100%;
+ }
+ 
 html{    
     display: flex;  
     flex-direction: column;
@@ -15,8 +19,7 @@ body{
     margin: 0px auto;
 }
 
-input{
-    height: 100%;
+table{
     width: 100%;
 }
 
