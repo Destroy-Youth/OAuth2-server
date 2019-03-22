@@ -26,7 +26,7 @@ public class SecurityApplication implements CommandLineRunner{
 
         //conexion.saveUser("iban","asdda",3);
         //conexion.saveUser("evanny","rivera",3);
-        //UserDO byNameAndPassword = prueba.findByNameAndPassword("ejjeej", "rivera").get();
+        //UserDO byNameAndPassword = prueba.findByNameAndPassword("evanny", "rivera").get();
 
     }
 }

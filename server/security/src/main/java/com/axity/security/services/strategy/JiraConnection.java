@@ -9,7 +9,7 @@ public class JiraConnection implements ConnectionStrategy{
     }
 
     @Override
-    public void login(UserTO userTO) {
-
+    public UserTO login(UserTO userTO) {
+        return userTO;
     }
 }

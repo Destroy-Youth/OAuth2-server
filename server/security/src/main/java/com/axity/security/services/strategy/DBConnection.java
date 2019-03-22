@@ -19,7 +19,7 @@ public class DBConnection implements ConnectionStrategy {
         this.userDAO.save(user);
     }
     @Override
-    public void login(UserTO userTO){
-        this.loginFacade.login(userTO);
+    public UserTO login(UserTO userTO){
+        return this.loginFacade.login(userTO);
     }
 }
