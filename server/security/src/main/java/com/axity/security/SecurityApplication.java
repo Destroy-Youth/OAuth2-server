@@ -12,28 +12,27 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Optional;
 
 @SpringBootApplication
 public class SecurityApplication implements CommandLineRunner{
 
-    @Autowired
-    ConnectionStrategy conexion;
+
     @Autowired
     LoginFacade prueba;
+
 	public static void main(String[] args) {
-		SpringApplication.run(SecurityApplication.class, args);
+	    SpringApplication.run(SecurityApplication.class, args);
 	}
+
 
     @Override
     public void run(String... args) throws Exception {
 
         //conexion.saveUser("iban","asdda",3);
         //conexion.saveUser("evanny","rivera",3);
-        //UserTO userTO=new UserTO();
-        //userTO.setName("evanny");
-        //userTO.setPassword("rivera");
-        //UserTO byNameAndPassword = prueba.login(userTO);
-
+        UserTO userTO=new UserTO();
+        userTO.setName("evanny");
+        userTO.setPassword("rivera");
+        this.prueba.login(userTO);
     }
 }

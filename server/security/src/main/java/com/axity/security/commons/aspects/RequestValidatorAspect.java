@@ -40,7 +40,7 @@ public class RequestValidatorAspect{
             }
             else{
                 errorTO.setErrorMessage("Error desconocido");
-                errorTO.setErrorCode(500);
+                errorTO.setErrorCode(666);
                 return new ResponseEntity<>(errorTO,HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }

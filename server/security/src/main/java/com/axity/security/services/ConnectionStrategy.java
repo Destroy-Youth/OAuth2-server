@@ -4,5 +4,5 @@ import com.axity.security.commons.to.UserTO;
 
 public interface ConnectionStrategy{
     void saveUser(String name,String password,int age);
-    UserTO login(UserTO userTO);
+    void authentication(UserTO userTO);
 }

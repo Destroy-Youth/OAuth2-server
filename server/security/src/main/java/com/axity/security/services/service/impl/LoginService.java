@@ -10,13 +10,9 @@ import java.util.Optional;
 
 @Service
 public class LoginService implements ILoginService{
-    @Autowired
-    UserDAO userDAO;
 
     @Override
-    public UserDO login(String name,String password) {
+    public void validateToken() {
 
-        UserDO byNameAndPassword = this.userDAO.findByNameAndPassword(name, password).get();
-        return byNameAndPassword;
     }
 }

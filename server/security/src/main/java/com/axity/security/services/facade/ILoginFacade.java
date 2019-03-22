@@ -6,5 +6,5 @@ import com.axity.security.model.UserDO;
 import java.util.Optional;
 
 public interface ILoginFacade{
-    UserTO login(UserTO userTO);
+    void login(UserTO userTO);
 }

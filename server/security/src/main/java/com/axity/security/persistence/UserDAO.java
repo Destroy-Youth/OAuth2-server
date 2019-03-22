@@ -6,6 +6,6 @@ import java.util.Optional;
 
 public interface UserDAO extends CrudRepository<UserDO,Long>{
 
-    Optional<UserDO> findByNameAndPassword(String name, String password);
+    UserDO findByNameAndPassword(String name, String password);
 
 }
