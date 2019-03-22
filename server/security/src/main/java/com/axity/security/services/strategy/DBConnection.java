@@ -20,6 +20,7 @@ public class DBConnection implements ConnectionStrategy {
     }
     @Override
     public UserTO login(UserTO userTO){
-        return this.loginFacade.login(userTO);
+        UserTO loginTO= this.loginFacade.login(userTO);
+        return loginTO;
     }
 }
