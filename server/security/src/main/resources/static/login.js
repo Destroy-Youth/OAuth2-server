@@ -23,7 +23,7 @@ function check(form)
                 }),
             body: JSON.stringify({
                 name: form.user.value,
-                pwd: form.pwd.value
+                password: form.pwd.value
               }) // <-- Post parameters
             })  
         .then((response) => response.text())
