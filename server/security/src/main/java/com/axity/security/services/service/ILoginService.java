@@ -6,5 +6,6 @@ import com.axity.security.model.UserDO;
 import java.util.Optional;
 
 public interface ILoginService{
-    UserDO login (String name, String password);
+    void validateToken();
+    UserDO getInfo(String name,String password);
 }

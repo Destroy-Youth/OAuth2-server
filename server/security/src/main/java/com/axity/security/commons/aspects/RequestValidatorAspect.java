@@ -18,7 +18,7 @@ public class RequestValidatorAspect{
 
     static final Logger LOG= LogManager.getLogger(RequestValidatorAspect.class);
 
-    @Around(value = "execution(* com.axity.security.*.*(..))  && args(..)")
+    @Around(value = "execution(* com.axity.security.web.*.*(..))  && args(..)")
     public ResponseEntity execute(ProceedingJoinPoint joinPoint){
         ResponseEntity result;
         try{
@@ -35,11 +35,17 @@ public class RequestValidatorAspect{
             if(e instanceof NoSuchElementException){
                 LOG.info("Usuario o contraseña incorrectos");
                 errorTO.setErrorMessage("Usuario o contraseña incorrectos");
-                errorTO.setErrorCode(500);
-                return new ResponseEntity<>(errorTO, HttpStatus.NOT_FOUND);
+                errorTO.setErrorCode(401);
+                return new ResponseEntity<>(errorTO, HttpStatus.UNAUTHORIZED);
+            }
+            if(e instanceof NullPointerException){
+                LOG.info("se deben llenar ambos campos");
+                errorTO.setErrorMessage("se deben llenar ambos campos");
+                errorTO.setErrorCode(401);
+                return new ResponseEntity<>(errorTO, HttpStatus.UNAUTHORIZED);
             }
             else{
-                errorTO.setErrorMessage("Error desconocido");
+                errorTO.setErrorMessage("Error interno");
                 errorTO.setErrorCode(500);
                 return new ResponseEntity<>(errorTO,HttpStatus.INTERNAL_SERVER_ERROR);
             }

@@ -1,5 +1,4 @@
-var w = $(window).width();
- $('.content').css('width', w);
+var url="http://localhost:9090/auth/login";
  
 function check(form)
 {
@@ -16,7 +15,7 @@ function check(form)
     if(form.user.value=="" || form.pwd.value==""){
         alert("Campos no llenados");
     }else{
-        fetch("http://localhost:9090/login", {
+        fetch(url, {
             method: 'POST',
             credentials: 'same-origin',
             headers: new Headers({
@@ -24,7 +23,7 @@ function check(form)
                 }),
             body: JSON.stringify({
                 name: form.user.value,
-                pwd: form.pwd.value
+                password: form.pwd.value
               }) // <-- Post parameters
             })  
         .then((response) => response.text())
