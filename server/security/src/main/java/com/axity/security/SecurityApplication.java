@@ -17,9 +17,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SecurityApplication implements CommandLineRunner{
 
 
-    @Autowired
-    LoginFacade prueba;
-
 	public static void main(String[] args) {
 	    SpringApplication.run(SecurityApplication.class, args);
 	}
@@ -28,11 +25,5 @@ public class SecurityApplication implements CommandLineRunner{
     @Override
     public void run(String... args) throws Exception {
 
-        //conexion.saveUser("iban","asdda",3);
-        //conexion.saveUser("evanny","rivera",3);
-        UserTO userTO=new UserTO();
-        userTO.setName("evanny");
-        userTO.setPassword("rivera");
-        this.prueba.login(userTO);
     }
 }

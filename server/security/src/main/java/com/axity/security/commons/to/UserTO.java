@@ -7,6 +7,8 @@ public class UserTO implements Serializable{
     private String password;
     private int age;
 
+    public UserTO() {
+    }
 
     public int getId() { return id; }
 

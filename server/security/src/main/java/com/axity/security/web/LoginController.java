@@ -3,6 +3,7 @@ package com.axity.security.web;
 import java.io.Console;
 
 import com.axity.security.commons.to.UserTO;
+import com.axity.security.services.facade.impl.LoginFacade;
 import com.axity.security.services.strategy.DBConnection;
 
 import org.apache.logging.log4j.LogManager;
@@ -22,12 +23,12 @@ public class LoginController {
 	static final Logger LOG = LogManager.getLogger(LoginController.class);
 
 	@Autowired
-    DBConnection dbConnection;
+	LoginFacade loginFacade;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
 	public ResponseEntity<UserTO> login(@RequestBody UserTO user) {	
-		UserTO login = this.dbConnection.login(user);
+		UserTO loggedTO=this.loginFacade.login(user);
 		LOG.info(user);
-		return new ResponseEntity<>(login, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }
