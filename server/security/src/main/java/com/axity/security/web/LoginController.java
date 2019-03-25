@@ -3,7 +3,11 @@ package com.axity.security.web;
 import java.io.Console;
 
 import com.axity.security.commons.to.UserTO;
+
 import com.axity.security.services.facade.impl.LoginFacade;
+
+import com.axity.security.services.facade.ILoginFacade;
+
 import com.axity.security.services.strategy.DBConnection;
 
 import org.apache.logging.log4j.LogManager;
@@ -23,6 +27,7 @@ public class LoginController {
 	static final Logger LOG = LogManager.getLogger(LoginController.class);
 
 	@Autowired
+
 	LoginFacade loginFacade;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
