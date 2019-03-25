@@ -6,6 +6,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.axity.security.commons.Constants;
 import com.axity.security.services.jwt.ITokenCreation;
 import com.axity.security.services.jwt.IVerifyToken;
 import org.apache.logging.log4j.LogManager;
@@ -18,7 +19,7 @@ import java.util.*;
 @Service
 public class TokenService implements ITokenCreation,IVerifyToken {
 
-    static final Logger LOG = LogManager.getLogger(TokenService.class);
+    private static final Logger LOG = LogManager.getLogger(TokenService.class);
 
     private Map<String,String> createdTokens;
 
@@ -30,18 +31,18 @@ public class TokenService implements ITokenCreation,IVerifyToken {
    public String createToken(String username,Integer secondsToLive){
 
        try {
-           Algorithm algorithm = Algorithm.HMAC256("secret");
+           Algorithm algorithm = Algorithm.HMAC256(Constants.SECRET_KEY);
            String token = JWT.create()
                    .withClaim("user",username)
                    .withIssuedAt(Date.from(Instant.now()))
-                   //.withExpiresAt(Date.from(Instant.now().plusSeconds(secondsToLive)))
+                   .withExpiresAt(Date.from(Instant.now().plusSeconds(secondsToLive)))
                    .sign(algorithm);
            LOG.info("Token: " + token);
            createdTokens.put(username,token);
            return token;
        } catch (JWTCreationException exception){
            //Invalid Signing configuration / Couldn't convert Claims.
-           LOG.error("Create token: " + exception);
+           LOG.error("Create token exception: " + exception);
        }
        return null;
    }
@@ -54,15 +55,15 @@ public class TokenService implements ITokenCreation,IVerifyToken {
                throw new NoSuchElementException();
            }
 
-           Algorithm algorithm = Algorithm.HMAC256("secret");
+           Algorithm algorithm = Algorithm.HMAC256(Constants.SECRET_KEY);
            JWTVerifier verifier = JWT.require(algorithm)
-                   .build(); //Reusable verifier instance
+                   .build();
            DecodedJWT jwt = verifier.verify(token);
            LOG.info("Token verified: " + jwt.getToken());
            return true;
        } catch (JWTVerificationException | NoSuchElementException exception){
            //Invalid signature/claims
-           LOG.error("Validate token: " + exception);
+           LOG.error("Validate token exception: " + exception);
        }
 
        return false;
