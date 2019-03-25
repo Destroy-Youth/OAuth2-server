@@ -28,14 +28,17 @@ public class SecurityApplicationTests {
 
 	@Test
     public void validateCreatedToken(){
-
+		String token = tokenService.createToken("Franz",300);
+		boolean verified = tokenService.verifyToken(token);
+		Assert.assertTrue(verified);
     }
 
 
 	@Test
 	public void validateNotCreatedToken(){
 		String token = tokenService.createToken("Franz",300);
-		boolean verified = tokenService.verifyToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiSXZhbiIsImlhdCI6MTU1MzI5Mzk1NH0.VJKBsHzu3exsaQi9thAFycWXr_pq4VqySAzDFiQMWFI");
+		tokenService.deleteToken(token);
+		Boolean verified = tokenService.verifyToken(token);
 		Assert.assertFalse(verified);
 	}
 
