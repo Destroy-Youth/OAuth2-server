@@ -35,10 +35,8 @@ public class LoginController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
 	public ResponseEntity<TokenTO> login(@RequestBody UserTO user) {
-		UserTO loggedTO=this.loginFacade.login(user);
-		String tokenLogin=this.tokenService.createToken(loggedTO.getName(),60);
-		TokenTO tokenTO= new TokenTO(tokenLogin);
+		TokenTO loggedTO=this.loginFacade.login(user);
 		LOG.info(user);
-		return new ResponseEntity<>(tokenTO,HttpStatus.OK);
+		return new ResponseEntity<>(loggedTO,HttpStatus.OK);
 	}
 }
