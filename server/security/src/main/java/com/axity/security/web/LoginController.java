@@ -3,11 +3,12 @@ package com.axity.security.web;
 import java.io.Console;
 
 import com.axity.security.commons.to.UserTO;
-
+import com.axity.security.commons.to.TokenTO;
 import com.axity.security.services.facade.impl.LoginFacade;
 
 import com.axity.security.services.facade.ILoginFacade;
 
+import com.axity.security.services.jwt.impl.TokenService;
 import com.axity.security.services.strategy.DBConnection;
 
 import org.apache.logging.log4j.LogManager;
@@ -29,11 +30,15 @@ public class LoginController {
 	@Autowired
 
 	LoginFacade loginFacade;
+	@Autowired
+    TokenService tokenService;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
-	public ResponseEntity<UserTO> login(@RequestBody UserTO user) {	
+	public ResponseEntity<TokenTO> login(@RequestBody UserTO user) {
 		UserTO loggedTO=this.loginFacade.login(user);
+		String tokenLogin=this.tokenService.createToken(loggedTO.getName(),60);
+		TokenTO tokenTO= new TokenTO(tokenLogin);
 		LOG.info(user);
-		return new ResponseEntity<>(HttpStatus.OK);
+		return new ResponseEntity<>(tokenTO,HttpStatus.OK);
 	}
 }
