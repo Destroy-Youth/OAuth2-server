@@ -1,6 +1,8 @@
 package com.axity.security.commons.aspects;
 
 
+import com.auth0.jwt.exceptions.JWTCreationException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -43,6 +45,19 @@ public class RequestValidatorAspect{
                 errorTO.setErrorMessage("se deben llenar ambos campos");
                 errorTO.setErrorCode(401);
                 return new ResponseEntity<>(errorTO, HttpStatus.UNAUTHORIZED);
+            }
+            if (e instanceof JWTVerificationException){
+                LOG.error("Verify token exception: " + e);
+                errorTO.setErrorMessage(e.getMessage());
+                errorTO.setErrorCode(501);
+                return new ResponseEntity<>(errorTO, HttpStatus.NOT_FOUND);
+            }
+            if (e instanceof JWTCreationException){
+                LOG.error("Create token exception: " + e);
+                LOG.error("Verify token exception: " + e);
+                errorTO.setErrorMessage(e.getMessage());
+                errorTO.setErrorCode(501);
+                return new ResponseEntity<>(errorTO, HttpStatus.CONFLICT);
             }
             else{
                 errorTO.setErrorMessage("Error interno");
