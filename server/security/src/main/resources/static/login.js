@@ -29,9 +29,11 @@ function check(form)
         .then((response) => response.text())
         .then((response) => {
         alert(response);
+        
         })
         .catch((error) => {
             console.error(error);
     });
+    
     }
 }
