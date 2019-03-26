@@ -3,25 +3,19 @@ package com.axity.security.services.jwt.impl;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTCreationException;
-import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.axity.security.commons.Constants;
-import com.axity.security.services.jwt.ITokenCreation;
-import com.axity.security.services.jwt.IVerifyToken;
+import com.axity.security.services.jwt.ITokenService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
-import sun.rmi.runtime.Log;
 
-import javax.naming.directory.NoSuchAttributeException;
-import java.rmi.NoSuchObjectException;
 import java.time.Instant;
 import java.util.*;
 
 @Service
-public class TokenService implements ITokenCreation, IVerifyToken {
+public class TokenService implements ITokenService{
 
     private static final Logger LOG = LogManager.getLogger(TokenService.class);
     private static final String AUTHORIZATION_SCHEME = "Bearer";

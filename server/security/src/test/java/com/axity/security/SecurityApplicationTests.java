@@ -1,6 +1,5 @@
 package com.axity.security;
 
-import com.axity.security.services.jwt.ITokenCreation;
 import com.axity.security.services.jwt.impl.TokenService;
 import org.junit.Assert;
 import org.junit.Test;
