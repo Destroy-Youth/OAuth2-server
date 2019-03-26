@@ -3,7 +3,6 @@ package com.axity.security.web;
 import com.axity.security.commons.to.TokenTO;
 import com.axity.security.commons.to.UserTO;
 import com.axity.security.services.jwt.impl.TokenService;
-import com.sun.deploy.net.HttpResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,7 @@ public class TestController {
             produces = "application/json")
     public ResponseEntity createToken(@RequestBody UserTO user) {
 
-        TokenTO tokenTO = new TokenTO();
+        TokenTO tokenTO = new TokenTO("");
         String token = tokenService.createToken(user.getName(),5000);
         tokenTO.setToken(token);
 

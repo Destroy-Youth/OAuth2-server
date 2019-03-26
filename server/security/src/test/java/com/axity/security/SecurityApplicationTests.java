@@ -1,7 +1,6 @@
 package com.axity.security;
 
 
-import com.axity.security.services.jwt.ITokenCreation;
 import com.axity.security.services.jwt.impl.TokenService;
 
 import com.axity.security.commons.to.UserTO;
