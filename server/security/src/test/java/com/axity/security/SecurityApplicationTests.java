@@ -1,7 +1,8 @@
 package com.axity.security;
 
 
-import com.axity.security.services.jwt.ITokenCreation;
+
+import com.axity.security.persistence.UserDAO;
 import com.axity.security.services.jwt.impl.TokenService;
 
 import com.axity.security.commons.to.UserTO;
@@ -56,8 +57,8 @@ public class SecurityApplicationTests {
 
 	@Test
 	public void mustBeSuccess(){
-		dbConnection.saveUser("evanny","ieee",23);
-		UserDO userDO =loginService.getInfo("evanny","ieee");
+        this.dbConnection.saveUser("evanny","12345",23);
+		UserDO userDO =loginService.getInfo("evanny","12345");
 		Assert.assertNotNull(userDO);
 	}
 

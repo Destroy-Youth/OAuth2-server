@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface ILoginService{
     void validateToken();
     UserDO getInfo(String name,String password);
+
 }
