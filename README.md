@@ -41,3 +41,28 @@ al final del metodo facade se envia el token generado en JWT para que sea enviad
 ***
 ## Funcionamiento del cliente HTML
 ***
+Para el apartado del cliente se diseñaron recursos estaticos para el projecto, los cuales se componen de:
+- Archivo HTML
+- Archivo CSS
+- Archivo JavaScript
+- Imagen en formato PNG
+
+### Archivo HTML
+
+Para el apartado del Front se creo un login con HTML5, el cual contiene las cosas basicas para su uso.
+- Inputs para el usuario y la contraseña
+- Un boton para Acceder
+- Un logo
+
+### Archivo CSS
+
+Este archivo contiene lo que son los estilos para la pagina.
+Principalmente se utiliza lo que es FlexBox para acomodar los elementos dentro de la pagina.
+
+### Archivo JavaScript
+Este javascript es el que contiene la logica para consumir el servicio del login.
+Aqui se le da logica al boton de login, para poder obtener los datos de los inputs(Usuario y Password), los convierte en un json y los prepara para llamar al servicio rest
+Para consumir el servicio rest se utiliza la funcion fetch.
+Para mas informacion de la funcion fetch:[Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch).
+Al final al recibir la respuesta, en caso de se exitosa, se obtiene el token del servicio y se redirecciona a otra pagina web con el token(Actualmente solo redirecciona a la pagina de Google con el token como un parametro). En caso contrario se le manda un mensaje al usuario atravez de una alerta.
+
