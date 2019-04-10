@@ -1,7 +1,7 @@
 package com.axity.security;
 
 
-import com.axity.security.services.jwt.ITokenCreation;
+
 import com.axity.security.services.jwt.impl.TokenService;
 
 import com.axity.security.commons.to.UserTO;
@@ -54,11 +54,11 @@ public class SecurityApplicationTests {
 	}
 
 
-	@Test
-	public void mustBeSuccess(){
-		dbConnection.saveUser("evanny","ieee",23);
-		UserDO userDO =loginService.getInfo("evanny","ieee");
-		Assert.assertNotNull(userDO);
-	}
+//	@Test
+//	public void mustBeSuccess(){
+//		dbConnection.saveUser("evanny","ieee",23);
+//		UserDO userDO =loginService.getInfo("evanny","ieee");
+//		Assert.assertNotNull(userDO);
+//	}
 
 }

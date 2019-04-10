@@ -28,12 +28,15 @@ function check(form)
             })  
         .then((response) => response.text())
         .then((response) => {
-        alert(response);
-        
+        console.log(response);
+        var json = JSON.parse(response);
+        console.log(json.token);
+        window.location="http://google.com/?token="+json.token;
+
         })
         .catch((error) => {
             console.error(error);
     });
-    
+
     }
 }

@@ -32,7 +32,7 @@ public class LoginController {
 	LoginFacade loginFacade;
 	@Autowired
     TokenService tokenService;
-	
+
 	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
 	public ResponseEntity<TokenTO> login(@RequestBody UserTO user) {
 		TokenTO loggedTO=this.loginFacade.login(user);
