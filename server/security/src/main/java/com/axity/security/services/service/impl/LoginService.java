@@ -23,4 +23,5 @@ public class LoginService implements ILoginService{
     public UserDO getInfo(String name, String password) {
         return this.userDAO.findByNameAndPassword(name,password).get();
     }
+
 }

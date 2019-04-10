@@ -21,4 +21,11 @@
         </createTable>
         
     </changeSet>
+    <changeSet author="evanny" id="addUniqueConstraint">
+    <addUniqueConstraint 
+            columnNames="id, name"
+            constraintName="const_name"
+            tableName="users"
+            />
+</changeSet>
 </databaseChangeLog> 

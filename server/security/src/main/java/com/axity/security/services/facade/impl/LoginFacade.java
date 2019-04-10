@@ -29,7 +29,6 @@ public class LoginFacade implements ILoginFacade{
     public TokenTO login(UserTO userTO) {
         int strategy=1;
         if(strategy==1){
-
             UserDO loggedDO = this.dbConnection.authentication(userTO);
             String token = this.tokenService.createToken(loggedDO.getName(),60);
             TokenTO tokenTO= new TokenTO(token);
