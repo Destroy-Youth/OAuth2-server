@@ -8,6 +8,12 @@
 4. Funcionamiento de los servicios REST
 5. Funcionamiento del cliente HTML
 ***
+
+## Tech
+* [Springboot]()
+* [SpringCloud]()
+* [Hibernate]()
+
 ## Componentes
 La carpeta principal del proyecto esta compuesta por seis carpetas que contienen los archivos generados durante el desarrollo, estas carpetas son:
 
@@ -15,9 +21,23 @@ La carpeta principal del proyecto esta compuesta por seis carpetas que contienen
 * Diagramas de secuencia
 * Documentacion
 * Liquibase (contiene los archivos usados para la elaboración de la base de datos)
-* Server (contiene los archivos que conforman el servicio REST)
+* Server (contiene los archivos que conforman el servidor OAuth2)
 ***
 ## Funcionamiento del servidor de configuración
+
+El propósito del servidor de configuraciones es aprovisionar al servidor OAuth2 y a las aplicaciones que hagan uso del mismo con archivos de configuración guardados en el servidor de configuraciones o en un repositorio en línea de Git.
+
+Existen casos en los que distintos microservicios consumen la misma base de datos, por lo cual es necesaria la misma configuración en todos ellos. Si todos requieren del mismo archivo este puede ser creado una vez y ser despachado por el servidor de configuración.
+
+El servidor se configura en el archivo `ConfigurationServer/src/main/resources/application.yaml`
+
+Tiene dos implementaciones:
+* Una permite servir los archivos almacenados en el mismo servidor, en su carpeta de resources/config.
+* La otra le indoca al servidor que los recursos se encuentran en un repositorio de Git (en este caso un repositorio en GitHub)
+
+### Cliente del servidor de configuraciones
+Al usar SpringCloud, la configuración de la aplicación cambia, ya que al iniciar un programa generado con SpringBoot el contexto de Spring se encarga de configurar la aplicación con las especificaciones dadas en el archivo `aplication.yaml` ó `aplication.properties`. Ahora en vez de que directamente el contexto de Spring configure la aplicación, se tiene un bootstrap que, dependiendo de la configuración del archivo `bootstrap.yaml` (contiene la dirección del servidor que contiene la configuración de la aplicación), decide cómo se va a configurar el contexto de la aplicación a partir del recurso solicitado al servidor de configuración. En otras palabras, la configuración de la aplicación ya no es responsabilidad de esta misma.
+
 ***
 ## Funcionamiento del servicio REST
 ### Composición
