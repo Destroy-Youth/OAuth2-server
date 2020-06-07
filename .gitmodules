@@ -1,0 +1,3 @@
+[submodule "ConfigServer"]
+	path = ConfigServer
+	url = C:\\Users\\luis.herrerae\\Documents\\Proyectos\\OAuth2 server\\ConfigServer

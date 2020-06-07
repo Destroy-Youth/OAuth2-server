@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="login.css">
+        <title>Login</title>        
+    </head>
+    <body>  
+        <form class="container" name="loginForm">
+            <table>                    
+                <tr>
+                    <img src="icons/logo.png" alt="LoginImage" width="200" height="120">
+                </tr>
+
+                <tr>
+                    <td>Username:</td>
+                    <td><input type="text" size=25 name="user" required></td>
+                </tr>
+                        
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="Password" size=25 name="pwd" required></td>
+                </tr>
+                        
+                <tr>
+                    <td><input type="button" id="login" value="Login" onclick="check(this.form);"></td>
+                </tr>
+                        
+            </table>
+        </form>
+        <script src="login.js"></script>
+    </body>
+</html>
